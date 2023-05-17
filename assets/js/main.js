@@ -6,10 +6,46 @@ const limit = 50;
 let offset = 0;
 
 function detail(obj) {
-  //pokemonList.firstElementChild.textContent
+  //pokemonList.querySelectorAll()
+  // <div class="window_detail"></div>
+  // <div class="loader"></div>
   let idNumber = obj.firstElementChild.textContent.substring(1);
-  document.body.innerHTML = `<section class="details"><div class="loader"></div></section> ${document.body.innerHTML}`;
+  let name = obj.querySelector(".name").textContent;
+  let type = obj.querySelectorAll(".type");
+  console.log(type);
+  let types = "";
+  for (let i = 0; i < type.length; ++i) {
+    types += `<li class="type ${type[i].textContent}">${type[i].textContent}</li>`;
+  }
+  document.body.innerHTML = `<section class="details">
+  <div class="window_detail">
+    <div class="close_container">
+      <div class="close_button" onclick="close">
+        <div class="leftright"></div>
+        <div class="rightleft"></div>
+      </div>
+    </div>
+     <div class="detail">
+           <div class="name_and_types">
+             <span>${name}</span>
+             <ol class="types">
+               ${types}
+             </ol>
+           </div>
+           <span>#${idNumber}</span>
+     </div>
+  </div> 
+</section> ${document.body.innerHTML}`;
+
+  let details = document.querySelector(".details");
+  document
+    .querySelector(".close_button")
+    .addEventListener("click", () =>
+      document.querySelector(".details").remove()
+    );
+
   console.log(idNumber);
+  console.log(details);
 }
 
 function convertPokemonToLi(pokemon) {

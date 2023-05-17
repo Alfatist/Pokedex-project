@@ -11,7 +11,7 @@
 }
 
 .grass {
-  background-color: #77c850;
+  background-color: #8acf69;
 }
 
 .fire {
@@ -100,26 +100,49 @@
   margin-bottom: 0.25rem;
 }
 
-.pokemon .detail {
+.detail {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.pokemon .detail .types {
+.window_detail .detail {
+  color: aliceblue;
+  padding: 0 30px;
+}
+
+.name_and_types {
+  display: flex;
+  flex-direction: column;
+  font-size: 3rem;
+}
+
+.types {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.pokemon .detail .types .type {
+.name_and_types .types {
+  display: flex;
+  justify-content: space-between;
+}
+
+.types .type {
   color: #fff;
   padding: 0.25rem 0.5rem;
   margin: 0.25rem 0;
   font-size: 0.625rem;
   border-radius: 1rem;
-  filter: brightness(1.1);
+  filter: brightness(1.08);
+  text-align: center;
+  opacity: 0.8;
+}
+
+.window_detail .types .type {
+  padding: 0.25rem 1.5rem;
+  font-size: 1rem;
   text-align: center;
 }
 
