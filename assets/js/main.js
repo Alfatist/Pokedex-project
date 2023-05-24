@@ -12,7 +12,7 @@ function detail(obj) {
   let idNumber = obj.firstElementChild.textContent.substring(1);
   let name = obj.querySelector(".name").textContent;
   let type = obj.querySelectorAll(".type");
-  console.log(type);
+  let img = obj.querySelector("img");
   let types = "";
   for (let i = 0; i < type.length; ++i) {
     types += `<li class="type ${type[i].textContent}">${type[i].textContent}</li>`;
@@ -27,25 +27,21 @@ function detail(obj) {
     </div>
      <div class="detail">
            <div class="name_and_types">
-             <span>${name}</span>
+             <span class="name">${name}</span>
              <ol class="types">
                ${types}
              </ol>
            </div>
            <span>#${idNumber}</span>
      </div>
+     <div class="img">${img.outerHTML}</div>
   </div> 
 </section> ${document.body.innerHTML}`;
-
-  let details = document.querySelector(".details");
   document
     .querySelector(".close_button")
     .addEventListener("click", () =>
       document.querySelector(".details").remove()
     );
-
-  console.log(idNumber);
-  console.log(details);
 }
 
 function convertPokemonToLi(pokemon) {
@@ -69,24 +65,33 @@ function convertPokemonToLi(pokemon) {
 }
 
 function loadPokemonItens(offset, limit) {
-  pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
-    const newHtml = pokemons.map(convertPokemonToLi).join("");
-    pokemonList.innerHTML += newHtml;
+  return new Promise((resolve, reject) => {
+    pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+      const newHtml = pokemons.map(convertPokemonToLi).join("");
+      pokemonList.innerHTML += newHtml;
+
+      // Aguardar a atualização do HTML e CSS antes de resolver a promessa
+      requestAnimationFrame(() => {
+        resolve();
+      });
+    });
   });
 }
 
 loadPokemonItens(offset, limit);
 
-loadMoreButton.addEventListener("click", () => {
+loadMoreButton.addEventListener("click", async () => {
+  loadMoreButton.classList.toggle("loading");
   offset += limit;
   const qtdRecordsWithNexPage = offset + limit;
 
   if (qtdRecordsWithNexPage >= maxRecords) {
     const newLimit = maxRecords - offset;
-    loadPokemonItens(offset, newLimit);
+    await loadPokemonItens(offset, newLimit);
 
     loadMoreButton.parentElement.removeChild(loadMoreButton);
   } else {
-    loadPokemonItens(offset, limit);
+    await loadPokemonItens(offset, limit);
   }
+  loadMoreButton.classList.toggle("loading");
 });
