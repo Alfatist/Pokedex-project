@@ -16,7 +16,7 @@ body {
 }
 
 .details {
-  display: none;
+  display: flex;
   position: fixed;
   top: 0;
   background-color: rgba(0, 0, 0, 0.473);
@@ -39,6 +39,16 @@ body {
   background-color: #fdd190;
 }
 
+.pokemon_details {
+  position: absolute;
+  background-color: aliceblue;
+  width: 100%;
+  height: 50%;
+  bottom: 0;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
 @media screen and (min-width: 992px) {
   .content,
   .window_detail {
@@ -47,7 +57,11 @@ body {
     margin: auto;
     border-radius: 1rem;
   }
+  .pokemon_details {
+    max-width: 992px;
+  }
 }
+
 .window_detail {
   border-radius: 5px;
   height: 100vh;
