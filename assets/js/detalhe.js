@@ -33,3 +33,12 @@ function detail(obj) {
     details.style.display = "none";
   });
 }
+
+let alturaElementos =
+  document.querySelector(".detail").clientHeight +
+  document.querySelector(".close_container").clientHeight +
+  15;
+
+document.querySelector(
+  ".img"
+).style = `height: calc(50% - ${alturaElementos}px`;

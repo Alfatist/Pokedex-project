@@ -155,7 +155,7 @@
   text-align: center;
 }
 .img img {
-  width: 50%;
+  height: 100%;
 }
 
 .pokemon .detail img {
