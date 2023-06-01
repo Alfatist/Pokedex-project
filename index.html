@@ -18,7 +18,10 @@
     <!-- Font Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Meu CSS -->
     <link rel="stylesheet" href="./assets/css/global.css" />
@@ -47,25 +50,52 @@
         </div>
 
         <div class="img">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png" alt="bulbasauro" />
+          <img
+            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+            alt="bulbasauro"
+          />
         </div>
 
         <!-- Fazer tudo aqui do pokémon!  -->
         <div class="pokemon_details">
           <ul class="ul_details">
-            <li><input type="radio" name="pokeStats" id="About" checked /><label for="About">About</label></li>
-            <li><input type="radio" name="pokeStats" id="Base Stats" /><label for="Base Stats">Base Stats</label></li>
             <li>
-              <input type="radio" name="pokeStats" id="Evolution" disabled title="function disabled as it does not appear in the design" /><label
+              <input type="radio" name="pokeStats" id="About" checked /><label
+                for="About"
+                >About</label
+              >
+            </li>
+            <li>
+              <input type="radio" name="pokeStats" id="Base Stats" /><label
+                for="Base Stats"
+                >Base Stats</label
+              >
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="pokeStats"
+                id="Evolution"
+                disabled
+                title="function disabled as it does not appear in the design"
+              /><label
                 for="Evolution"
                 title="function disabled as it does not appear in the design"
+                onclick="alert(title)"
                 >Evolution</label
               >
             </li>
             <li>
-              <input type="radio" name="pokeStats" id="Moves" disabled title="function disabled as it does not appear in the design" /><label
+              <input
+                type="radio"
+                name="pokeStats"
+                id="Moves"
+                disabled
+                title="function disabled as it does not appear in the design"
+              /><label
                 for="Moves"
                 title="function disabled as it does not appear in the design"
+                onclick="alert(title)"
                 >Moves</label
               >
             </li>
