@@ -84,13 +84,13 @@ ul {
   padding: 0 3vw;
 }
 
-.pokeStats {
+.pokeAbout {
   padding-left: 3vw;
-  display: flex;
+  display: none;
   flex-direction: column;
   flex: 1;
   justify-content: space-evenly;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .ul_details li {
@@ -144,26 +144,45 @@ input[type="radio"]:checked + label:after {
 }
 
 .aboutUl:nth-of-type(1) {
-  flex-grow: 0.5;
+  width: 29%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   gap: 8px;
+  overflow: auto;
 }
 
 .aboutUl:nth-of-type(2) {
-  flex-grow: 0.3;
+  flex-grow: 0.1;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   gap: 8px;
 }
 
-.aboutUl h3 {
+.aboutUl:nth-of-type(2) li {
+  opacity: 1;
+}
+
+.pokeAbout h3 {
   flex-grow: 0.2;
   display: flex;
   align-content: center;
   align-items: center;
+}
+
+.aboutDiv:first-of-type {
+  display: flex;
+  flex-grow: 0.5;
+}
+
+.aboutDiv:last-of-type {
+  display: flex;
+  flex-grow: 0.3;
+}
+
+.pokemon_details:has(#about:checked) .pokeAbout {
+  display: flex;
 }
 
 @media screen and (min-width: 992px) {

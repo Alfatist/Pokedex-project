@@ -60,16 +60,18 @@
         <div class="pokemon_details">
           <ul class="ul_details">
             <li>
-              <input type="radio" name="pokeStats" id="About" checked /><label
-                for="About"
+              <input type="radio" name="pokeStats" id="about" /><label
+                for="about"
                 >About</label
               >
             </li>
             <li>
-              <input type="radio" name="pokeStats" id="Base Stats" /><label
-                for="Base Stats"
-                >Base Stats</label
-              >
+              <input
+                type="radio"
+                name="pokeStats"
+                id="Base Stats"
+                checked
+              /><label for="Base Stats">Base Stats</label>
             </li>
             <li>
               <input
@@ -101,21 +103,41 @@
             </li>
           </ul>
 
-          <div class="pokeStats">
-            <ul class="aboutUl">
-              <li>Species</li>
-              <li>Height</li>
-              <li>Weight</li>
-              <li>Abilities</li>
-            </ul>
+          <div class="pokeAbout">
+            <div class="aboutDiv">
+              <ul class="aboutUl">
+                <li>Species</li>
+                <li>Height</li>
+                <li>Weight</li>
+                <li>Abilities</li>
+              </ul>
+              <ul class="aboutUl">
+                <li>Seed</li>
+                <li>2'3.6" (0.70cm)</li>
+                <li>15.2 lbs (6.9kg)</li>
+                <li>Overgrow, Chlorophyl</li>
+              </ul>
+            </div>
 
             <h3>Breeding</h3>
-
-            <ul class="aboutUl">
-              <li>Gender</li>
-              <li>Egg Groups</li>
-              <li>Egg Cycle</li>
-            </ul>
+            <div class="aboutDiv">
+              <ul class="aboutUl">
+                <li>Gender</li>
+                <li>Egg Groups</li>
+                <li>Egg Cycle</li>
+              </ul>
+              <ul class="aboutUl">
+                <li>
+                  <span title="I don't have the symbol, so I'm using unicode"
+                    >&#9794; 87.5%</span
+                  >
+                  |
+                  <span title="I don't have the symbol, so I'm using unicode"
+                    >&#9792; 12.5%</span
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <!-- término do detalhe do pokémon! -->
