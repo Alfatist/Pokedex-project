@@ -15,6 +15,14 @@ body {
   background-color: #f6f8fc;
 }
 
+input[type="radio"] {
+  display: none;
+}
+
+ul {
+  list-style: none;
+}
+
 .details {
   display: flex;
   position: fixed;
@@ -39,6 +47,18 @@ body {
   background-color: #fdd190;
 }
 
+.detail {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.window_detail .detail {
+  color: aliceblue;
+  margin-left: 15px;
+}
+
 .pokemon_details {
   position: absolute;
   background-color: aliceblue;
@@ -47,6 +67,69 @@ body {
   bottom: 0;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
+}
+
+.top_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.ul_details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 0 30px 0 30px;
+}
+
+.pokeStats {
+  padding-left: 30px;
+}
+
+.ul_details li {
+  display: contents;
+}
+
+.ul_details label {
+  padding: 20px 2px;
+  opacity: 0.3;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+}
+
+.ul_details label:hover {
+  opacity: 1;
+}
+
+.ul_details label:after {
+  display: block;
+  padding-top: 20px;
+  content: "";
+  border-bottom: 2px solid darkslateblue;
+  transform: scaleX(0);
+  transition: transform 100ms ease-in-out;
+}
+
+.ul_details label:not([disabled]):hover::after {
+  transform: scaleX(1);
+}
+
+input[type="radio"]:checked + label {
+  opacity: 1;
+}
+
+input[type="radio"]:checked + label:after {
+  transform: scaleX(1);
+}
+
+.ul_details input[disabled] + label:hover {
+  opacity: 0.3;
+  cursor: not-allowed;
+  color: rgb(255, 0, 0);
+}
+
+.ul_details input[disabled] + label:hover::after {
+  transform: scaleX(0);
 }
 
 @media screen and (min-width: 992px) {
@@ -65,102 +148,4 @@ body {
 .window_detail {
   border-radius: 5px;
   height: 100vh;
-}
-
-#loadMoreButton.loading {
-  content: "";
-  pointer-events: none;
-  font-size: 0;
-  content: "";
-  display: block;
-  margin: 10px auto;
-  border: 5px solid #f3f3f300;
-  border-top: 5px solid #555;
-  border-radius: 50%;
-  -webkit-animation: spin 1s linear infinite;
-  animation: spin 1s linear infinite;
-  background-color: transparent;
-}
-
-/* loading circle */
-
-.loader {
-  border: 5px solid #f3f3f300;
-  border-top: 5px solid #555;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 1s linear infinite;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Close button */
-
-.top_container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-
-.close_button {
-  position: relative;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  margin-right: 15px;
-  margin-top: 15px;
-}
-
-.leftright {
-  height: 4px;
-  width: 50px;
-  position: absolute;
-  margin-top: 24px;
-  background-color: var(--softorange);
-  border-radius: 2px;
-  transform: rotate(45deg);
-  transition: all 0.3s ease-in;
-}
-
-.rightleft {
-  height: 4px;
-  width: 50px;
-  position: absolute;
-  margin-top: 24px;
-  background-color: var(--softorange);
-  border-radius: 2px;
-  transform: rotate(-45deg);
-  transition: all 0.3s ease-in;
-}
-
-label {
-  color: white;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 0.6em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  transition: all 0.3s ease-in;
-  opacity: 0;
-}
-.close {
-  margin: 60px 0 0 5px;
-  position: absolute;
-}
-
-.close_button:hover .leftright {
-  transform: rotate(-45deg);
-  background-color: var(--tomatored);
-}
-.close_button:hover .rightleft {
-  transform: rotate(45deg);
-  background-color: var(--tomatored);
 }

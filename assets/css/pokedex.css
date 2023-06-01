@@ -100,18 +100,6 @@
   margin-bottom: 0.25rem;
 }
 
-.detail {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.window_detail .detail {
-  color: aliceblue;
-  padding: 0 30px;
-}
-
 .name_and_types {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,43 @@
+.close_button {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.leftright {
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: var(--softorange);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  transition: all 0.3s ease-in;
+}
+
+.rightleft {
+  height: 4px;
+  width: 50px;
+  position: absolute;
+  margin-top: 24px;
+  background-color: var(--softorange);
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  transition: all 0.3s ease-in;
+}
+
+.close {
+  margin: 60px 0 0 5px;
+  position: absolute;
+}
+
+.close_button:hover .leftright {
+  transform: rotate(-45deg);
+  background-color: var(--tomatored);
+}
+.close_button:hover .rightleft {
+  transform: rotate(45deg);
+  background-color: var(--tomatored);
+}
