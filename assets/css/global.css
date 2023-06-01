@@ -63,10 +63,12 @@ ul {
   position: absolute;
   background-color: aliceblue;
   width: 100%;
-  height: 50%;
+  height: calc(50% + 3vh);
   bottom: 0;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .top_container {
@@ -84,6 +86,11 @@ ul {
 
 .pokeStats {
   padding-left: 3vw;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-evenly;
+  overflow: scroll;
 }
 
 .ul_details li {
@@ -91,7 +98,7 @@ ul {
 }
 
 .ul_details label {
-  padding: 20px 2px;
+  padding: 20px 2px 0px;
   opacity: 0.3;
   transition: all 100ms ease-in-out;
   cursor: pointer;
@@ -130,6 +137,33 @@ input[type="radio"]:checked + label:after {
 
 .ul_details input[disabled] + label:hover::after {
   transform: scaleX(0);
+}
+
+.aboutUl li {
+  opacity: 0.6;
+}
+
+.aboutUl:nth-of-type(1) {
+  flex-grow: 0.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+}
+
+.aboutUl:nth-of-type(2) {
+  flex-grow: 0.3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+}
+
+.aboutUl h3 {
+  flex-grow: 0.2;
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 
 @media screen and (min-width: 992px) {
