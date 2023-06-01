@@ -34,11 +34,6 @@ function detail(obj) {
   });
 }
 
-let alturaElementos =
-  document.querySelector(".detail").clientHeight +
-  document.querySelector(".close_container").clientHeight +
-  15;
+let pokeImg = document.querySelector(".img");
 
-document.querySelector(
-  ".img"
-).style = `height: calc(50% - ${alturaElementos}px`;
+pokeImg.style = `height: calc(50% - ${pokeImg.previousElementSibling.clientHeight + 15}px)`;

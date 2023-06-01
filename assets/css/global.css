@@ -105,9 +105,10 @@ body {
 
 /* Close button */
 
-.close_container {
-  text-align: right;
-  text-align: -webkit-right;
+.top_container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
 .close_button {
