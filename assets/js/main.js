@@ -42,19 +42,15 @@ function loadPokemonItens(offset, limit) {
 loadPokemonItens(offset, limit);
 
 loadMoreButton.addEventListener("click", async () => {
-  console.log("Estou aqui!! 0");
   loadMoreButton.classList.toggle("loading");
   offset += limit;
   const qtdRecordsWithNexPage = offset + limit;
   if (qtdRecordsWithNexPage >= maxRecords) {
-    console.log("Estou aqui!! 1");
     const newLimit = maxRecords - offset;
     await loadPokemonItens(offset, newLimit);
     loadMoreButton.parentElement.removeChild(loadMoreButton);
   } else {
-    console.log("Estou aqui!! 2");
     await loadPokemonItens(offset, limit);
   }
   loadMoreButton.classList.toggle("loading");
-  console.log("Estou aqui!! 3");
 });
