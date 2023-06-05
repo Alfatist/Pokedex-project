@@ -19,7 +19,8 @@ function convertPokemonToLi(pokemon) {
                 </ol>
 
                 <img src="${pokemon.photo}"
-                     alt="${pokemon.name}">
+                     alt="${pokemon.name}"
+                     loading="lazy">
             </div>
         </li>
     `;
@@ -30,15 +31,12 @@ function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
       const newHtml = pokemons.map(convertPokemonToLi).join("");
       pokemonList.innerHTML += newHtml;
-
-      // Aguardar a atualização do HTML e CSS antes de resolver a promessa
       requestAnimationFrame(() => {
         resolve();
       });
     });
   });
 }
-
 loadPokemonItens(offset, limit);
 
 loadMoreButton.addEventListener("click", async () => {

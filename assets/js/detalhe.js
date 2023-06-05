@@ -17,8 +17,6 @@ async function detail(obj) {
           "&#9794; " + (((8 - species.gender_rate) / 8) * 100 + "%"),
           "&#9792; " + ((species.gender_rate / 8) * 100 + "%"),
         ].join(" | ");
-  console.log(pokemon);
-  console.log(species);
   details.innerHTML = `<div class="window_detail">
   <div class="top_container">
     <div class="detail">
@@ -41,6 +39,7 @@ async function detail(obj) {
     <img
       src="${pokemon.sprites.front_default}"
       alt="${pokemon.name} image"
+      loading="lazy"
     />
   </div>
 
@@ -138,6 +137,12 @@ async function detail(obj) {
     details.replaceChildren("");
     details.style.display = "none";
   });
+
+  let pokeImg = document.querySelector("div.img");
+  pokeImg.style.maxHeight = `${
+    pokeImg.clientHeight + pokeImg.previousElementSibling.clientHeight + 15
+  }px`;
+  pokeImg.style.height = "100%";
 }
 
 function meters_to_feet(meters) {
