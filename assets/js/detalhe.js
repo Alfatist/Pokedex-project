@@ -42,8 +42,6 @@ async function detail(obj) {
       loading="lazy"
     />
   </div>
-
-  <!-- Fazer tudo aqui do pokémon!  -->
   <div class="pokemon_details">
     <ul class="ul_details">
       <li>
