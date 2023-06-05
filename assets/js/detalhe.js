@@ -141,6 +141,7 @@ async function detail(obj) {
     pokeImg.clientHeight + pokeImg.previousElementSibling.clientHeight + 15
   }px`;
   pokeImg.style.height = "100%";
+  // I'm here!!!
 }
 
 function meters_to_feet(meters) {
