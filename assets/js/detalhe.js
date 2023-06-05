@@ -1,5 +1,7 @@
 let details = document.body.querySelector(".details");
 async function detail(obj) {
+  details.style.display = "flex";
+  details.innerHTML = '<div class="loader"></div>';
   const idNumber = obj.firstElementChild.textContent.substring(1);
 
   const pokemon = await fetch(
@@ -17,7 +19,6 @@ async function detail(obj) {
         ].join(" | ");
   console.log(pokemon);
   console.log(species);
-  details.style.display = "flex";
   details.innerHTML = `<div class="window_detail">
   <div class="top_container">
     <div class="detail">

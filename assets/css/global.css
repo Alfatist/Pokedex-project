@@ -207,7 +207,7 @@ input[type="radio"]:checked + label:after {
 @media screen and (min-width: 992px) {
   .content,
   .window_detail {
-    max-width: 992px;
+    max-width: calc(992px * 125 / 100);
     height: auto;
     margin: auto;
     border-radius: 1rem;
