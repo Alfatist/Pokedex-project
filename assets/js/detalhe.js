@@ -1,11 +1,22 @@
 let details = document.body.querySelector(".details");
 async function detail(obj) {
-  let idNumber = obj.firstElementChild.textContent.substring(1);
+  const idNumber = obj.firstElementChild.textContent.substring(1);
 
-  let pokemon = await fetch(
+  const pokemon = await fetch(
     `https://pokeapi.co/api/v2/pokemon/${idNumber}`
   ).then((response) => response.json());
+  const species = await fetch(pokemon.species.url).then((response) =>
+    response.json()
+  );
+  const male_female =
+    species.gender_rate < 0
+      ? "none"
+      : [
+          "&#9794; " + (((8 - species.gender_rate) / 8) * 100 + "%"),
+          "&#9792; " + ((species.gender_rate / 8) * 100 + "%"),
+        ].join(" | ");
   console.log(pokemon);
+  console.log(species);
   details.style.display = "flex";
   details.innerHTML = `<div class="window_detail">
   <div class="top_container">
@@ -58,12 +69,20 @@ async function detail(obj) {
           <li>Abilities</li>
         </ul>
         <ul class="aboutUl">
-          <li>${await fetch(pokemon.species.url)
-            .then((response) => response.json())
-            .then((species) => species.genera[7].genus)}</li>
-          <li>2'3.6" (0.70cm)</li>
-          <li>15.2 lbs (6.9kg)</li>
-          <li>Overgrow, Chlorophyl</li>
+          <li>${
+            species.genera.filter(
+              (element) => element.language.name === "en"
+            )[0].genus
+          }</li>
+          <li>${meters_to_feet(pokemon.height / 10)} (${(
+    pokemon.height / 10
+  ).toFixed(2)}m)</li>
+          <li>${(pokemon.weight / 4.536).toFixed(1)} lbs (${(
+    pokemon.weight / 10
+  ).toFixed(1)} kg)</li>
+          <li>${pokemon.abilities
+            .map((element) => element.ability.name)
+            .join(", ")}</li>
         </ul>
       </div>
 
@@ -75,10 +94,12 @@ async function detail(obj) {
           <li>Egg Cycle</li>
         </ul>
         <ul class="aboutUl">
-          <li><span title="I don't have the symbol, so I'm using unicode">&#9794; 87.5%</span> | <span title="I don't have the symbol, so I'm using unicode">&#9792; 12.5%</span>
+          <li>${male_female}
           </li>
-          <li>Monster</li>
-          <li>Grass</li>
+          <li>${species.egg_groups[0].name}</li>
+          <li title="I know; egg cycle is not the second egg group. Just following the design." onclick="alert(title)">${
+            species.egg_groups[1]?.name ?? "-----"
+          }</li>
         </ul>
       </div>
     </div>
@@ -93,45 +114,36 @@ async function detail(obj) {
           <li>Speed</li>
         </ul>
         <ul class="aboutUl">
-          <li>45</li>
-          <li>60</li>
-          <li>48</li>
-          <li>65</li>
-          <li>65</li>
-          <li>45</li>
+          ${pokemon.stats.map((base) => `<li>${base.base_stat}</li>`).join("")}
         </ul>
         <ul class="aboutUl">
-          <li>
-            <meter min="0" max="100" low="45" high="50" optimum="100" value="45"></meter>
-          </li>
-          <li>
-            <meter min="0" max="100" low="45" high="50" optimum="100" value="60"></meter>
-          </li>
-          <li>
-            <meter min="0" max="100" low="45" high="50" optimum="100" value="48"></meter>
-          </li>
-          <li>
-            <meter min="0" max="100" low="45" high="50" optimum="100" value="65"></meter>
-          </li>
-          <li>
-            <meter min="0" max="100" low="45" high="50" optimum="100" value="65"></meter>
-          </li>
-          <li>
-            <meter min="0" max="100" low="45" high="50" optimum="100" value="45"></meter>
-          </li>
+          ${pokemon.stats
+            .map(
+              (base) =>
+                `<li><meter min="0" max="100" low="45" high="50" optimum="100" value="${base.base_stat}"</meter></li>`
+            )
+            .join("")}
         </ul>
       </div>
       <div class="aboutUl">
         <h3>Type Defenses</h3>
 
-        <p>The effectiveness of each type on Charmander</p>
+        <p>The effectiveness of each type on ${pokemon.name}</p>
       </div>
     </div>
   </div>
-  <!-- término do detalhe do pokémon! -->
 </div>`;
   document.querySelector(".close_button").addEventListener("click", () => {
     details.replaceChildren("");
     details.style.display = "none";
   });
+}
+
+function meters_to_feet(meters) {
+  const feet = meters * 3.28084;
+  const fInt = Math.floor(feet);
+  const inches = (feet - fInt) * 12;
+  const iRounded = inches.toFixed(1);
+  const result = fInt + "'" + iRounded + '"';
+  return result;
 }
