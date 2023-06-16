@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "Roboto";
+  src: url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap);
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -220,4 +226,28 @@ input[type="radio"]:checked + label:after {
 .window_detail {
   border-radius: 5px;
   height: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background-color: #202020;
+  }
+
+  .window_detail {
+    background: #1a1e27;
+  }
+
+  .content {
+    background: #303030;
+    box-shadow: 0px 24px 32px -8px rgba(255, 255, 255, 0.08);
+  }
+
+  .pokemon {
+    filter: brightness(0.9);
+  }
+
+  .pokemon_details {
+    background-color: #313131;
+  }
 }
